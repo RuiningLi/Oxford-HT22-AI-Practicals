@@ -4,16 +4,17 @@ import java.util.HashSet;
 
 public class GraphSearch implements Search {
     private Frontier frontier;
-    private int numNodes;
+    private int numberOfNodesGenerated = 0;
 
     public GraphSearch(Frontier frontier) {
         this.frontier = frontier;
     }
+
     @Override
     public Node findSolution(State initialConfiguration, GoalTest goalTest) {
         HashSet<State> visitedStates = new HashSet<>();
         frontier.add(new Node(null, null, initialConfiguration));
-        numNodes = 1;
+        numberOfNodesGenerated = 1;
         visitedStates.add(initialConfiguration);
         while (!frontier.isEmpty()) {
             Node node = frontier.remove();
@@ -25,7 +26,7 @@ public class GraphSearch implements Search {
                     if (!visitedStates.contains(newState)) {
                         frontier.add(new Node(node, action, newState));
                         visitedStates.add(newState);
-                        ++numNodes;
+                        ++numberOfNodesGenerated;
                     }
                 }
             }
@@ -35,6 +36,6 @@ public class GraphSearch implements Search {
 
     @Override
     public int getNumberOfNodesGenerated() {
-        return numNodes;
+        return numberOfNodesGenerated;
     }
 }
