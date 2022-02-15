@@ -7,8 +7,8 @@ public class DepthFirstFrontier implements Frontier {
     private int maximumNodesStored = 0;
 
     public void add(Node node) {
-        maximumNodesStored = Math.max(maximumNodesStored, depthFirstFrontier.size());
         depthFirstFrontier.add(node);
+        maximumNodesStored = Math.max(maximumNodesStored, depthFirstFrontier.size());
     }
     public void clear() {
         depthFirstFrontier.clear();
@@ -23,6 +23,6 @@ public class DepthFirstFrontier implements Frontier {
 
     @Override
     public int getMaximumNodesStored() {
-        return 0;
+        return maximumNodesStored;
     }
 }

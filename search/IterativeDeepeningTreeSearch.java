@@ -1,11 +1,11 @@
 package search;
 
 public class IterativeDeepeningTreeSearch implements Search {
+    private Frontier frontier = new DepthFirstFrontier();
     private int numberOfNodesGenerated = 0;
 
     @Override
     public Node findSolution(State initialConfiguration, GoalTest goalTest) {
-        Frontier frontier = new DepthFirstFrontier();
         numberOfNodesGenerated = 0;
         for (int depth = 0; ; ++depth) {
             boolean cutoff = false;
@@ -33,5 +33,9 @@ public class IterativeDeepeningTreeSearch implements Search {
     @Override
     public int getNumberOfNodesGenerated() {
         return numberOfNodesGenerated;
+    }
+
+    public int getMaximumNodesStored() {
+        return frontier.getMaximumNodesStored();
     }
 }

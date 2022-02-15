@@ -8,8 +8,8 @@ public class BreadthFirstFrontier implements Frontier {
     private int maximumNodesStored = 0;
 
     public void add(Node node) {
-        maximumNodesStored = Math.max(maximumNodesStored, breadthFirstFrontier.size());
         breadthFirstFrontier.add(node);
+        maximumNodesStored = Math.max(maximumNodesStored, breadthFirstFrontier.size());
     }
     public void clear() {
         breadthFirstFrontier.clear();

@@ -2,9 +2,9 @@ package npuzzle;
 
 import search.*;
 
-public class BFTS_Demo {
+public class BFGS_Demo {
     public static void main(String[] args) {
-        System.out.println("This is a demonstration of breadth-first tree search on 8-puzzle");
+        System.out.println("This is a demonstration of breadth-first graph search on 8-puzzle");
         System.out.println();
 
         Tiles initialConfiguration = new Tiles(new int[][]{
@@ -15,11 +15,11 @@ public class BFTS_Demo {
 
         GoalTest goalTest = new TilesGoalTest();
         Frontier breathFirstFrontier = new BreadthFirstFrontier();
-        Search breathFirstTreeSearch = new TreeSearch(breathFirstFrontier);
-        Node solution = breathFirstTreeSearch.findSolution(initialConfiguration, goalTest);
+        Search breathFirstGraphSearch = new GraphSearch(breathFirstFrontier);
+        Node solution = breathFirstGraphSearch.findSolution(initialConfiguration, goalTest);
         new NPuzzlePrinting().printSolution(solution);
         System.out.println("Performance of breadth-first tree search: number of nodes generated " +
-                breathFirstTreeSearch.getNumberOfNodesGenerated() +
+                breathFirstGraphSearch.getNumberOfNodesGenerated() +
                 "; maximum number of nodes stored on the frontier " +
                 breathFirstFrontier.getMaximumNodesStored());
     }
