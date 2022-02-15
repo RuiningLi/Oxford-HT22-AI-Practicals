@@ -9,15 +9,12 @@ public class BreadthFirstFrontier implements Frontier {
     public void add(Node node) {
         breadthFirstFrontier.add(node);
     }
-
     public void clear() {
         breadthFirstFrontier.clear();
     }
-
     public boolean isEmpty() {
         return breadthFirstFrontier.isEmpty();
     }
-
     public Node remove() {
         assert(!this.isEmpty());
         return breadthFirstFrontier.remove();

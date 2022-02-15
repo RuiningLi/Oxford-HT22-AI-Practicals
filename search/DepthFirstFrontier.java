@@ -8,15 +8,12 @@ public class DepthFirstFrontier implements Frontier {
     public void add(Node node) {
         depthFirstFrontier.add(node);
     }
-
     public void clear() {
         depthFirstFrontier.clear();
     }
-
     public boolean isEmpty() {
         return depthFirstFrontier.isEmpty();
     }
-
     public Node remove() {
         assert(!this.isEmpty());
         return depthFirstFrontier.pop();

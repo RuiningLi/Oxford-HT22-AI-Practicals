@@ -1,10 +1,12 @@
 package npuzzle;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
-
 import search.Action;
 import search.State;
+
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Objects;
+import java.util.Set;
 
 public class Tiles implements State {
 	public static final int EMPTY_TILE = 0;
@@ -51,7 +53,7 @@ public class Tiles implements State {
 		return tiles[row * width + column];
 	}
 	public Set<Action> getApplicableActions() {
-		Set<Action> actions = new LinkedHashSet<Action>();
+		Set<Action> actions = new LinkedHashSet<>();
 		for (Movement movement : Movement.values()) {
 			int newEmptyTileRow = emptyTileRow + movement.deltaRow;
 			int newEmptyTileColumn = emptyTileColumn + movement.deltaColumn;
@@ -68,5 +70,20 @@ public class Tiles implements State {
 		newTiles[emptyTileRow * width + emptyTileColumn] = getTile(newEmptyTileRow, newEmptyTileColumn);
 		newTiles[newEmptyTileRow * width + newEmptyTileColumn] = EMPTY_TILE;
 		return new Tiles(width, newTiles, newEmptyTileRow, newEmptyTileColumn);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Tiles tiles1 = (Tiles) o;
+		return width == tiles1.width && emptyTileRow == tiles1.emptyTileRow && emptyTileColumn == tiles1.emptyTileColumn && Arrays.equals(tiles, tiles1.tiles);
+	}
+
+	@Override
+	public int hashCode() {
+		int result = Objects.hash(width, emptyTileRow, emptyTileColumn);
+		result = 31 * result + Arrays.hashCode(tiles);
+		return result;
 	}
 }
