@@ -5,6 +5,7 @@ public class Node {
 	public final Action action;
 	public final State state;
 	public int depth;
+	public int value;
 	
 	public Node(Node parent, Action action, State state) {
 		this.parent = parent;
