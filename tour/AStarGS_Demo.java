@@ -7,7 +7,7 @@ public class AStarGS_Demo {
         System.out.println("This is a demonstration of A-Star graph search on Romania tour");
         System.out.println();
 
-        Cities romania = SetUpRomania.getRomaniaMapSmall();
+        Cities romania = SetUpRomania.getRomaniaMap();
         City startCity = romania.getState("Bucharest");
 
         GoalTest goalTest = new TourGoalTest(romania.getAllCities(), startCity);

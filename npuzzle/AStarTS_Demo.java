@@ -14,7 +14,7 @@ public class AStarTS_Demo {
         });
 
         GoalTest goalTest = new TilesGoalTest();
-        NodeFunction nodeFunction = new MisplacedTilesHeuristicFunction();
+        NodeFunction nodeFunction = new AStarFunction(new MisplacedTilesHeuristicFunction());
         Frontier bestFirstFrontier = new BestFirstFrontier(nodeFunction);
         Search AStarTreeSearch = new TreeSearch(bestFirstFrontier);
         Node solution = AStarTreeSearch.findSolution(initialConfiguration, goalTest);

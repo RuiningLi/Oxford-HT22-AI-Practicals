@@ -29,6 +29,9 @@ public class TourHeuristicFunction implements NodeFunction {
                 farthestUnvisitedCity = city;
             }
         }
+        if (farthestUnvisitedCity == null) {
+            return 0;
+        }
         return distanceToFarthestUnvisitedCity + farthestUnvisitedCity.getShortestDistanceTo(goalCity);
     }
 }

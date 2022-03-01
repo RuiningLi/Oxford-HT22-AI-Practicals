@@ -10,7 +10,7 @@ public class IterativeDeepeningTreeSearch implements Search {
         for (int depth = 0; ; ++depth) {
             boolean cutoff = false;
             frontier.clear();
-            frontier.add(new Node(null, null, initialConfiguration, 0));
+            frontier.add(new Node(null, null, initialConfiguration));
             ++numberOfNodesGenerated;
             while (!frontier.isEmpty()) {
                 Node node = frontier.remove();
@@ -21,7 +21,7 @@ public class IterativeDeepeningTreeSearch implements Search {
                 else {
                     for (Action action : node.state.getApplicableActions()) {
                         State newState = node.state.getActionResult(action);
-                        frontier.add(new Node(node, action, newState, node.depth + 1));
+                        frontier.add(new Node(node, action, newState));
                         ++numberOfNodesGenerated;
                     }
                 }
