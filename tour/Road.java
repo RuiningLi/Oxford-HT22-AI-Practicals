@@ -12,6 +12,8 @@ public class Road implements Action {
 		this.targetCity = targetCity;
 		this.length = length;
 	}
+
+	@Override
 	public int cost() {
 		return length;
 	}
