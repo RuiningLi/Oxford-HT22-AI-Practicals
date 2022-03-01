@@ -6,11 +6,11 @@ import search.NodeFunction;
 import java.util.Set;
 
 public class TourHeuristicFunction implements NodeFunction {
-    protected final Set<City> unvisitedCities;
+    protected final Set<City> allCities;
     protected final City goalCity;
 
-    public TourHeuristicFunction(Set<City> unvisitedCities, City goalCity) {
-        this.unvisitedCities = unvisitedCities;
+    public TourHeuristicFunction(Set<City> allCities, City goalCity) {
+        this.allCities = allCities;
         this.goalCity = goalCity;
     }
 
@@ -19,7 +19,10 @@ public class TourHeuristicFunction implements NodeFunction {
         City farthestUnvisitedCity = null;
         int distanceToFarthestUnvisitedCity = -1;
         TourState tourState = (TourState)n.state;
-        for (City city : unvisitedCities) {
+        for (City city : allCities) {
+            if (tourState.visitedCities.contains(city)) {
+                continue;
+            }
             int distance = tourState.currentCity.getShortestDistanceTo(city);
             if (distanceToFarthestUnvisitedCity < 0 || distance > distanceToFarthestUnvisitedCity) {
                 distanceToFarthestUnvisitedCity = distance;

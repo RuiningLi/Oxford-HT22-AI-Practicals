@@ -4,7 +4,7 @@ import search.*;
 
 public class BFGS_Demo {
 	public static void main(String[] args) {
-		System.out.println("This is a demonstration of breadth-first tree search on Romania tour");
+		System.out.println("This is a demonstration of breadth-first graph search on Romania tour");
 		System.out.println();
 		
 		Cities romania = SetUpRomania.getRomaniaMapSmall();
